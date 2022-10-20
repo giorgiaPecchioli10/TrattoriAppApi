@@ -6,6 +6,6 @@ namespace TrattoriAppApi.Models
     {
         public int TrattorId { get; set; }
         public string Type { get; set; }
-        public ColorType Color { get; set; }
+        public ColorType? Color { get; set; }
     }
 }

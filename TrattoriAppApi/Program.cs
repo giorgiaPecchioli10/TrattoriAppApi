@@ -1,3 +1,9 @@
+using TrattoriAppApi.Dal;
+using TrattoriAppApi.Dal.DalInterfaces;
+using TrattoriAppApi.Models;
+using TrattoriAppApi.Service;
+using TrattoriAppApi.Service.ServiceInterfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IServiceTrattor, ServiceTrattor>();
+builder.Services.AddScoped<IDal<Trattor>, DalTrattor>();
 
 var app = builder.Build();
 

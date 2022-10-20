@@ -4,11 +4,11 @@ namespace TrattoriAppApi.Service.ServiceInterfaces
 {
     public interface IServiceTrattor
     {
-        public Trattor Create(IEnumerable<Trattor> trattors);
-        public IEnumerable<Trattor> GetAllByFilter(ColorType color);
-        public Trattor GetDetail(int id);
-        public Trattor Put(int id);
-        public IEnumerable<Trattor> Delete(int id);
+        public Trattor AddTrattor(PostTrattorModel postTrattorModel);
+        public IEnumerable<Trattor> GetTrattorsByColor(ColorType color);
+        public Trattor GetTrattorDetail(int id);
+        public Trattor PutTrattor(int id);
+        public IEnumerable<Trattor> DeleteTrattor(int id);
 
 
 
