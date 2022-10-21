@@ -6,7 +6,7 @@ namespace TrattoriAppApi.Service
 {
     public class ServiceTrattor : IServiceTrattor
     {
-        private readonly IEnumerable<Trattor> _trattors = new List<Trattor>();
+        private  IEnumerable<Trattor> _trattors = new List<Trattor>();
         private readonly IDal<Trattor> _dalTrattor;
 
         public ServiceTrattor(IDal<Trattor> dalTrattor)
@@ -27,20 +27,28 @@ namespace TrattoriAppApi.Service
 
         }
 
+        public Trattor? GetTrattorDetail(int trattorId)
+        {
+            var trattors = _dalTrattor.Read().ToList();
+           var trattorDetail = trattors.FirstOrDefault(trattor => trattor.TrattorId == trattorId);
+
+            return trattorDetail;
+        }
+
+        public IEnumerable<Trattor>? GetTrattorsByColor(string color)
+        {
+            var trattors = _dalTrattor.Read().ToList();
+            var trattorsColor = trattors.Where(trattor => trattor.Color.Contains(color));
+            return trattorsColor;
+        }
+
         public IEnumerable<Trattor> DeleteTrattor(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Trattor> GetTrattorsByColor(ColorType color)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Trattor GetTrattorDetail(int id)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Trattor PutTrattor(int id)
         {
